@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Культурний простір</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<header>
+    <nav class="nav">
+        <div class="logo">
+            Сучасне мистецтво України
+        </div>
+
+        <ul class="menu">
+            <li>
+                <a href="index.html">Головна</a>
+            </li>
+
+            <li>
+                <a href="about.html">Про сайт</a>
+            </li>
+
+            <!-- АККАУНТ -->
+            <li>
+                <a href="#" id="navAccountLink" onclick="openAuth()">Акаунт</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h1>
+        Оберіть те що цікавить вас!
+    </h1>
+
+    <div class="sections">
+
+        <a href="Musiс.html" class="section-card">
+            <img src="img/Musik.png" class="card-icon" data-gif="img/Musik.gif" alt="Музика">
+            Музика
+        </a>
+
+        <a href="Book.html" class="section-card">
+            <img src="img/Book.png" class="card-icon" data-gif="img/Book.gif" alt="Книги">
+            Книги
+        </a>
+
+        <a href="Art.html" class="section-card">
+            <img src="img/Art.png" class="card-icon" data-gif="img/Art.gif" alt="Картини">
+            Картини
+        </a>
+
+        <a href="Photo.html" class="section-card">
+            <img src="img/Camera.png" class="card-icon" data-gif="img/Camera.gif" alt="Фото">
+            Фото
+        </a>
+
+    </div>
+</main>
+
+<!-- FOOTER — завжди знизу завдяки flex на body -->
+<footer>
+    <p>© 2026 Культурний простір</p>
+    <p class="footer-disclaimer">Усі матеріали, розміщені на сайті, належать їхнім авторам. Сайт створено виключно в навчальних та демонстраційних цілях — жодні комерційні наміри не переслідуються.</p>
+<p>Контакти:</p>
+    <div class="footer-contacts">
+        <p onclick="copyText('+380967189294')">📞 +380 96 718 92 94</p>
+        <p onclick="copyText('besarabnikita2007@gmail.com')">📧 email: besarabnikita2007@gmail.com</p>
+        <p>👤 Бесараб Нікіта Сергійович</p>
+    </div>
+</footer>
+
+<!-- ===== МОДАЛЬНЕ ВІКНО АКАУНТА ===== -->
+<div id="authModal" class="auth-modal">
+
+    <div class="auth-box">
+        <div class="auth-inner">
+
+            <!-- ХРЕСТИК над табами -->
+            <div class="auth-header">
+                <button class="close-btn" onclick="closeAuth()">✖</button>
+            </div>
+
+            <!-- Привітання залогіненого користувача -->
+            <div id="userPanel" style="display:none; margin-bottom:12px;">
+                <div id="userGreeting" style="color:#fff; font-weight:bold; margin-bottom:8px;"></div>
+            </div>
+
+            <!-- ТАБИ -->
+            <div class="auth-tabs">
+                <button id="tabLogin" class="active" onclick="showLogin()">Вхід</button>
+                <button id="tabRegister" onclick="showRegister()">Реєстрація</button>
+            </div>
+
+            <!-- ФОРМИ з обгорткою для анімації -->
+            <div class="auth-forms-wrapper">
+
+                <!-- LOGIN -->
+                <div id="loginForm" class="slide-in">
+                    <input id="loginUser" placeholder="Логін">
+
+                    <div class="pass-box">
+                        <input id="loginPass" type="password" placeholder="Пароль">
+                        <button type="button" onclick="togglePass('loginPass')">
+                            <img src="img/Look.png" alt="show">
+                        </button>
+                    </div>
+
+                    <button onclick="login()">Увійти</button>
+
+                    <!-- Кнопка виходу на вкладці входу (прихована, якщо не залогінений) -->
+                    <button id="logoutBtnLogin" onclick="logout()" class="logout-btn" style="display:none;">
+                        Вийти з акаунту
+                    </button>
+                </div>
+
+                <!-- REGISTER -->
+                <div id="registerForm" class="slide-out-right" style="display:none;">
+                    <input id="regUser" placeholder="Логін">
+
+                    <div class="pass-box">
+                        <input id="regPass" type="password" placeholder="Пароль">
+                        <button type="button" onclick="togglePass('regPass')">
+                            <img src="img/Look.png" alt="show">
+                        </button>
+                    </div>
+
+                    <div class="pass-box">
+                        <input id="regPass2" type="password" placeholder="Підтвердити пароль">
+                        <button type="button" onclick="togglePass('regPass2')">
+                            <img src="img/Look.png" alt="show">
+                        </button>
+                    </div>
+
+                    <button onclick="register()">Зареєструватися</button>
+
+                    <!-- Кнопка виходу на вкладці реєстрації (прихована, якщо не залогінений) -->
+                    <button id="logoutBtnRegister" onclick="logout()" class="logout-btn" style="display:none;">
+                        Вийти з акаунту
+                    </button>
+                </div>
+
+            </div><!-- /auth-forms-wrapper -->
+
+        </div><!-- /auth-inner -->
+    </div><!-- /auth-box -->
+
+</div><!-- /authModal -->
+
+</body>
+</html>

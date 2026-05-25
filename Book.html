@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Книги</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<header>
+    <nav class="nav">
+        <div class="logo">Сучасне мистецтво України</div>
+        <ul class="menu">
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="about.html">Про сайт</a></li>
+            <li>
+                <a href="#" id="navAccountLink" onclick="openAuth()">Акаунт</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main class="photo-main">
+    <h1 class="photo-title">Книги</h1>
+
+    <div class="photo-gallery">
+
+        <!-- КНИГА 1 -->
+        <div class="photo-card" data-id="1"
+            onclick="openItemModal('1','book','img/Book1.jpg',
+                'Автор: Ім\'я автора',
+                'Назва книги 1 — тут буде опис книги. Додайте інформацію про сюжет, жанр або враження від прочитання.')">
+            <img src="img/Book1.jpg" alt="Книга 1"
+                 onerror="this.src='img/Book.png'">
+            <div class="photo-overlay">
+                <h3>Назва книги 1</h3>
+                <p>Ім'я автора</p>
+            </div>
+        </div>
+
+        <!-- КНИГА 2 -->
+        <div class="photo-card" data-id="2"
+            onclick="openItemModal('2','book','img/Book2.jpg',
+                'Автор: Ім\'я автора',
+                'Назва книги 2 — тут буде опис книги. Додайте інформацію про сюжет, жанр або враження від прочитання.')">
+            <img src="img/Book2.jpg" alt="Книга 2"
+                 onerror="this.src='img/Book.png'">
+            <div class="photo-overlay">
+                <h3>Назва книги 2</h3>
+                <p>Ім'я автора</p>
+            </div>
+        </div>
+
+        <!-- КНИГА 3 -->
+        <div class="photo-card" data-id="3"
+            onclick="openItemModal('3','book','img/Book3.jpg',
+                'Автор: Ім\'я автора',
+                'Назва книги 3 — тут буде опис книги. Додайте інформацію про сюжет, жанр або враження від прочитання.')">
+            <img src="img/Book3.jpg" alt="Книга 3"
+                 onerror="this.src='img/Book.png'">
+            <div class="photo-overlay">
+                <h3>Назва книги 3</h3>
+                <p>Ім'я автора</p>
+            </div>
+        </div>
+
+        <!-- КНИГА 4 -->
+        <div class="photo-card" data-id="4"
+            onclick="openItemModal('4','book','img/Book4.jpg',
+                'Автор: Ім\'я автора',
+                'Назва книги 4 — тут буде опис книги. Додайте інформацію про сюжет, жанр або враження від прочитання.')">
+            <img src="img/Book4.jpg" alt="Книга 4"
+                 onerror="this.src='img/Book.png'">
+            <div class="photo-overlay">
+                <h3>Назва книги 4</h3>
+                <p>Ім'я автора</p>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 Культурний простір</p>
+    <p class="footer-disclaimer">Усі матеріали, розміщені на сайті, належать їхнім авторам. Сайт створено виключно в навчальних та демонстраційних цілях — жодні комерційні наміри не переслідуються.</p>
+    <p>Контакти:</p>
+    <div class="footer-contacts">
+        <p onclick="copyText('+380967189294')">📞 +380 96 718 92 94</p>
+        <p onclick="copyText('besarabnikita2007@gmail.com')">📧 email: besarabnikita2007@gmail.com</p>
+        <p>👤 Бесараб Нікіта Сергійович</p>
+    </div>
+</footer>
+
+<!-- ===== ITEM MODAL ===== -->
+<div id="itemModal" class="item-modal">
+    <div class="item-modal-box">
+        <button class="im-close" onclick="closeItemModal()">✖</button>
+        <div class="im-left">
+            <img class="im-img" src="" alt="">
+            <div class="im-audio-wrap"></div>
+            <div class="im-info">
+                <p class="im-author"></p>
+                <p class="im-desc"></p>
+            </div>
+        </div>
+        <div class="im-right">
+            <div class="review-section"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== AUTH MODAL ===== -->
+<div id="authModal" class="auth-modal">
+    <div class="auth-box">
+        <div class="auth-inner">
+            <div class="auth-header">
+                <button class="close-btn" onclick="closeAuth()">✖</button>
+            </div>
+            <div id="userPanel" style="display:none; margin-bottom:12px;">
+                <div id="userGreeting" style="color:#fff; font-weight:bold; margin-bottom:8px;"></div>
+            </div>
+            <div class="auth-tabs">
+                <button id="tabLogin" class="active" onclick="showLogin()">Вхід</button>
+                <button id="tabRegister" onclick="showRegister()">Реєстрація</button>
+            </div>
+            <div class="auth-forms-wrapper">
+                <div id="loginForm" class="slide-in">
+                    <input id="loginUser" placeholder="Логін">
+                    <div class="pass-box">
+                        <input id="loginPass" type="password" placeholder="Пароль">
+                        <button type="button" onclick="togglePass('loginPass')"><img src="img/Look.png" alt="show"></button>
+                    </div>
+                    <button onclick="login()">Увійти</button>
+                    <button id="logoutBtnLogin" onclick="logout()" class="logout-btn" style="display:none;">Вийти з акаунту</button>
+                </div>
+                <div id="registerForm" class="slide-out-right" style="display:none;">
+                    <input id="regUser" placeholder="Логін">
+                    <div class="pass-box">
+                        <input id="regPass" type="password" placeholder="Пароль">
+                        <button type="button" onclick="togglePass('regPass')"><img src="img/Look.png" alt="show"></button>
+                    </div>
+                    <div class="pass-box">
+                        <input id="regPass2" type="password" placeholder="Підтвердити пароль">
+                        <button type="button" onclick="togglePass('regPass2')"><img src="img/Look.png" alt="show"></button>
+                    </div>
+                    <button onclick="register()">Зареєструватися</button>
+                    <button id="logoutBtnRegister" onclick="logout()" class="logout-btn" style="display:none;">Вийти з акаунту</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== LOGIN PROMPT MODAL ===== -->
+<div id="loginPromptModal" class="login-prompt-modal">
+    <div class="login-prompt-box">
+        <h3>🔒 Потрібен акаунт</h3>
+        <p>Читання/купівля книг та залишення відгуків доступні лише зареєстрованим користувачам.</p>
+        <button class="lp-btn" onclick="closeLoginPrompt(); openAuth();">Увійти / Зареєструватись</button>
+        <button class="lp-btn lp-cancel" onclick="closeLoginPrompt()">Закрити</button>
+    </div>
+</div>
+
+</body>
+</html>
